@@ -1,0 +1,37 @@
+{% load bootstrap5 %}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Lista de Frequência</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover align-middle">
+            <thead class="table-primary text-center">
+                <tr>
+                    <th>Aluno</th>
+                    <th>Turma</th>
+                    <th>Professor</th>
+                    <th>Polo</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for frequencia in frequencias %}
+                <tr>
+                    <td>{{ frequencia.aluno.nome }}</td>
+                    <td>{{ frequencia.turma }}</td>
+                    <td>{{ frequencia.professor.nome }}</td>
+                    <td>{{ frequencia.get_polo_display }}</td>
+                    <td>{{ frequencia.data }}</td>
+                    <td class="text-center">
+                        {% if frequencia.presente %}
+                        <span class="badge bg-success">Presente</span>
+                        {% else %}
+                        <span class="badge bg-danger">Ausente</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
